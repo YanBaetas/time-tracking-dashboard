@@ -79,7 +79,7 @@ populateDashboardActivity = (item) => {
 
     <div class="card-content">
       <h2>${title}</h2>
-      <img src="./images/icon-ellipsis.svg" alt="" />
+      <img class="ellipsis" src="./images/icon-ellipsis.svg" alt="" />
 
       <div class="daily active">
         <div class="activity">${item.timeframes.daily.current}hrs</div>
