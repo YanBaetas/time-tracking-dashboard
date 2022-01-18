@@ -1,0 +1,325 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /*Primary*/
+  --blue: hsl(246, 80%, 60%);
+  --light-orange: hsl(15, 100%, 70%); /*work*/
+  --soft-blue: hsl(195, 74%, 62%); /*play*/
+  --light-red: hsl(348, 100%, 68%); /*study*/
+  --lime-green: hsl(145, 58%, 55%); /*exercise*/
+  --violet: hsl(264, 64%, 52%); /*social*/
+  --soft-yellow: hsl(43, 84%, 65%); /*self care*/
+
+  /*Neutral*/
+  --very-dark-blue: hsl(226, 43%, 10%);
+  --dark-blue: hsl(235, 46%, 20%);
+  --desaturated-blue: hsl(235, 45%, 61%);
+  --pale-blue: hsl(236, 100%, 87%);
+
+  --white: hsl(255, 100%, 95%);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--very-dark-blue);
+  font-size: 1.125rem;
+  font-family: "Rubik", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "profile"
+    "dashboard";
+  padding: 3rem 1rem;
+}
+
+.profile {
+  grid-area: profile;
+}
+
+.dashboard {
+  grid-area: dashboard;
+}
+
+.card,
+.card-profile {
+  /*width: 90vw;
+  max-width: 350px;*/
+  color: var(--pale-blue);
+  margin-top: 2rem;
+}
+
+.card-header {
+  position: relative;
+  text-align: right;
+  z-index: -1;
+  overflow: hidden;
+  height: 120px;
+  border-radius: 20px 20px 0 0;
+}
+
+.card-header img {
+  position: absolute;
+  top: -0.7rem;
+  right: 1rem;
+}
+
+.card-header.exercise img {
+  top: 0;
+}
+
+.card-content {
+  margin-top: -5rem;
+  padding: 2rem 1rem;
+}
+
+.work {
+  background: var(--light-orange);
+}
+.play {
+  background: var(--soft-blue);
+}
+.study {
+  background: var(--light-red);
+}
+.exercise {
+  background: var(--lime-green);
+}
+.social {
+  background: var(--violet);
+}
+.self-care {
+  background: var(--soft-yellow);
+}
+
+/*.card-topic,*/
+.daily,
+.weekly,
+.monthly {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: option;
+}
+
+.card-content {
+  display: grid;
+  grid-template-areas:
+    "topic more"
+    "option option";
+}
+
+.card-content h2 {
+  color: var(--white);
+  grid-area: topic;
+  justify-self: start;
+  align-self: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.card-content img {
+  grid-area: more;
+  justify-self: end;
+  align-self: center;
+}
+
+.card-detail {
+  margin-top: 0.75rem;
+}
+
+.activity {
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.card .weekly,
+.card .monthly {
+  display: none;
+}
+
+.card-profile .card-profile-header {
+  position: relative;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--pale-blue);
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.card-profile .card-profile-header .profile-name {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.card-profile .card-profile-header img {
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  width: 75px;
+  margin-right: 1rem;
+}
+
+.card-profile .card-profile-options,
+.card .card-content {
+  background: var(--dark-blue);
+  border-radius: 20px;
+}
+
+.card-profile .card-profile-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -2rem;
+  z-index: -1;
+  padding: 3.5rem 1rem 1.5rem 1rem;
+}
+
+.card-profile .card-profile-options a {
+  text-decoration: none;
+  color: var(--desaturated-blue);
+}
+
+.card-profile .card-profile-options a.active,
+.card-profile .card-profile-options a:hover {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: var(--pale-blue);
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (min-width: 500px) and (max-width: 920px) {
+  .container {
+    grid-template-areas:
+      "profile profile"
+      "dashboard dashboard";
+    grid-template-columns: 180px minmax(290px, 400px);
+  }
+  .dashboard {
+    display: grid;
+    grid-template-areas:
+      "work play"
+      "study exercise"
+      "social selfcare";
+    gap: 1.5rem;
+    margin-left: 0;
+  }
+  .card .card-content {
+    padding: 2rem;
+  }
+  .activity {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin: 1rem 0;
+  }
+  .previous {
+    font-size: 0.875rem;
+  }
+
+  .daily,
+  .weekly,
+  .monthly {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-area: option;
+  }
+}
+
+@media only screen and (min-width: 921px) {
+  body {
+    justify-content: center;
+    height: 100vh;
+  }
+  .container {
+    grid-template-areas:
+      "profile dashboard"
+      "profile dashboard";
+    grid-template-columns: 250px minmax(290px, 700px);
+  }
+  .card-profile {
+    position: relative;
+    height: 100%;
+    margin-top: 0;
+    /*width: 280px;*/
+  }
+  .card-profile .card-profile-header {
+    position: absolute;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-profile .card-profile-header div {
+    margin: 3rem 0;
+  }
+  .card-profile .card-profile-header div > p {
+    font-size: 0.875rem;
+  }
+  .card-profile .card-profile-header .profile-name {
+    font-size: 2.75rem;
+  }
+  .card-profile .card-profile-options {
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0;
+    padding: 3.5rem 1rem 1.5rem 2rem;
+    height: 100%;
+  }
+  .profile {
+    grid: profile;
+  }
+  .card {
+    /*width: 280px;*/
+    margin-top: 0;
+  }
+  .dashboard {
+    display: grid;
+    grid-template-areas:
+      "work play study"
+      "exercise social selfcare";
+    gap: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  .card .card-content {
+    padding: 2rem;
+  }
+  .activity {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin: 1rem 0;
+  }
+  .previous {
+    font-size: 0.875rem;
+  }
+
+  .daily,
+  .weekly,
+  .monthly {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-area: option;
+  }
+}
