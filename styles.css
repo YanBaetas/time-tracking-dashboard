@@ -142,8 +142,14 @@ body {
   font-weight: 300;
 }
 
-.card .weekly,
-.card .monthly {
+.daily.active,
+.weekly.active,
+.monthly.active {
+  display: block;
+}
+.daily.hide,
+.weekly.hide,
+.monthly.hide {
   display: none;
 }
 
